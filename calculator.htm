@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="calculator.css"/>
+</head>
+<body>
+  <script>
+  var a="",b=0,c=0,f=0,s=0,oper="";
+  function reset()
+  {
+    document.getElementById('res').innerHTML=0;
+    a="";b=0;c=0;f==0;s=0;oper="";
+  }
+  function getElementsById(ids,id)
+  {
+    idlist=ids.split(" ");
+    result=[];
+    if(id=="Off")
+    {
+      document.getElementById('res').innerHTML=" ";
+    }
+    if(id=="On")
+    {
+      document.getElementById('res').innerHTML=0;
+    }
+    for( var i=0;i < idlist.length;i++)
+    {
+      if(id=="On")
+      {
+        document.getElementById(idlist[i]).disabled=false;
+        a="";b=0;s=0;c=0;f=0;oper="";
+      }
+      if(id=="Off") {
+      item=document.getElementById(idlist[i]).disabled=true;
+      a="";b=0;c=0;oper="";s=0;
+      }
+    }
+  }
+  function doStuff(id)
+  {
+    getElementsById("b1 b2 b3 b4 b5 b6 b7 b8 b9 b0 reset equal plus minus multiply divide",id);
+  }
+  function op1(num)
+  {
+    if((num==='+' || num==='-' || num==='/' || num==='X') && oper==="")
+    {
+      oper=num;
+      if(a!=="" && b===0)
+      b=parseInt(a);
+      a="";
+      f=1;
+      document.getElementById('res').innerHTML=num;
+      return;
+    }
+    else if(oper!=="" && (num==='+' || num==='-' || num==='/' || num==='X'))
+    {
+      return;
+    }
+    else if(num==='=')
+    {
+      c=parseInt(a);
+      switch(oper)
+      {
+        case '+':
+        document.getElementById('res').innerHTML=b+c;
+        b=b+c;
+        break;
+        case '-':
+        document.getElementById('res').innerHTML=b-c;
+        b=b-c;
+        break;
+        case 'X':
+        document.getElementById('res').innerHTML=b*c;
+        b=b*c;
+        break;
+        case '/':
+        if(c==0)
+        {
+          document.getElementById('res').innerHTML="Error";
+        }
+        else {
+          document.getElementById('res').innerHTML=b/c;
+          b=b/c;
+        }
+        break;
+      }
+      a="";
+      oper="";
+    }
+    else if(num===0 && a==="" && b===0)
+    {
+      return ;
+    }
+    else {
+      a=a+num;
+      document.getElementById('res').innerHTML=a;
+    }
+  }
+  </script>
+  <div class="calc">
+    <textarea  class="result" id="res"></textarea>
+    <div class="number">
+      <button type="button"  id="b1" class="digit" onclick="op1(1);" disabled>1</button>
+      <button type="button"  id="b2" class="digit" onclick="op1(2)" disabled>2</button>
+      <button type="button" id="b3" onclick="op1(3)" class="digit" disabled>3</button>
+      </br></br>
+      <button type="button" id="b4" onclick="op1(4)" class="digit" disabled>4</button>
+      <button type="button" id="b5" onclick="op1(5)" class="digit" disabled>5</button>
+      <button type="button" id="b6" class="digit" onclick="op1(6)" disabled>6</button>
+      </br></br>
+      <button type="button" id="b7" class="digit" onclick="op1(7)" disabled>7</button>
+      <button type="button" id="b8" class="digit" onclick="op1(8)" disabled>8</button>
+      <button type="button" id="b9" class="digit" onclick="op1(9)" disabled>9</button>
+      </br></br>
+      <button type="button" id="b0" class="digit" onclick="op1(0)" disabled>0</button>
+      <button type="button" id="reset" onclick="reset()" class="digit reset" disabled>Reset</button>
+    </div>
+    <div class="operators">
+      <button type"button" id="On" class="digit op" onclick="doStuff('On')">On</button>
+      <button type="button" id="Off" onclick="doStuff('Off')" class="digit op ">Off</button>
+      </br></br>
+      <button type="button" id="plus" onclick="op1('+');" class="digit op" disabled>+</button>
+      <button type="button" id="minus" onclick="op1('-');" class="digit op" disabled>-</button>
+    </br></br>
+      <button type="button" id="multiply" onclick="op1('X');" class="digit op" disabled>X</button>
+      <button type="button" id="divide" onclick="op1('/');" class="digit op" disabled>/</button>
+      </br></br>
+      <button type="button" id="equal" onclick="op1('=');" class="digit op eq" disabled>=</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+body
+{
+  margin:0px;
+  padding:0px;
+  background-color:grey;
+}
+textarea
+{
+  width:90%;
+}
+.calc
+{
+  padding:3%;
+  margin-left:33%;
+  margin-top:7%;
+  background-color:blue;
+  width:25%;
+  height:20em;
+  border:20px solid black;
+}
+.result
+{
+  background-color:white;
+  text-align: right;
+  color:black;
+  padding:1% 4%;
+  height:1.3em;
+  font-size:1.8em;
+}
+.number
+{
+  float:left;
+  margin-top:10%;
+  width:50%;
+  height:13em;
+  border:2px solid white;
+  padding:3%;
+  margin-right:4%;
+}
+.operators
+{
+  float:left;
+  width:30%;
+  height:13em;
+  border:2px solid white;
+  padding:3%;
+  margin-top:10%;
+}
+.digit
+{
+  color:white;
+  background-color:black;
+  border:2px solid white;
+  padding:5% 7%;
+  margin:0px 5%;
+}
+.reset
+{
+  padding:5% 16%;
+}
+.op
+{
+  width:35%;
+  font-size:0.9em;
+}
+.eq
+{
+  width:85%;
+  font-size:1.2em;
+}
+button:hover
+{
+  background-color:#222222;
+}
+button:active
+{
+  background-color:red;
+}
